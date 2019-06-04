@@ -18,7 +18,7 @@ logger.setLevel(logging.INFO)
 
 
 def main():
-    print("Reading in secure token...")
+    logger.info("Reading in secure token...")
     parser = argparse.ArgumentParser()
     parser.add_argument('token', help="Secure token for API auth")
     user_token = parser.parse_args();

@@ -107,4 +107,17 @@ alexaskill/
 # .env
 .env
 
+# zip files
+*.zip
+
+# build files
+*.sh
+
+# .idea
+.idea/
+
+# misc
+temp/
+src/hello_world.py
+
 
