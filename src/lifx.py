@@ -34,6 +34,26 @@ class LaunchRequestHandler(AbstractRequestHandler):
             False)
         return handler_input.response_builder.response
 
+class GetWeatherIntentHandler(AbstractRequestHandler):
+    """ Handler for Turning On ALL lights"""
+    def can_handle(self, handler_input):
+        # type: (HandlerInput) -> bool
+        return is_intent_name("GetCurrentWeather")(handler_input)
+
+    def handle(self, handler_input):
+        # type: (HandlerInput) -> Response
+        # speech_text = "Here is the current forecast!"
+
+        # LATITUDE = "34.746483"
+        # LONGITUDE = "-92.289597"
+        weather_request = "https://api.darksky.net/forecast/75a9e562db1e04cbb51a8af5ee22b6b5/34.746483,-92.289597?exclude=flags, minutely"
+        weather_json = requests.get(weather_request).json()
+        speech_text = weather_json['timezone']
+
+        handler_input.response_builder.speak(speech_text).set_card(SimpleCard("Hello!", speech_text))
+        return handler_input.response_builder.response
+
+
 class TurnOnAllLightsIntentHandler(AbstractRequestHandler):
     """ Handler for Turning On ALL lights"""
     def can_handle(self, handler_input):
