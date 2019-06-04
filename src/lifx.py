@@ -1,5 +1,8 @@
 import requests
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 class Lifx(object):
 
@@ -7,7 +10,8 @@ class Lifx(object):
         """
         Init Token
         """
-        self.ALL_LIGHTS_URL = "https://api.lifx.com/v1/lights/all"
+        # self.ALL_LIGHTS_URL = "https://api.lifx.com/v1/lights/all"
+        self.ALL_LIGHTS_URL = os.getenv("ALL_LIGHTS_URL")
         self.LIGHT_BY_ID_URL = "https://api.lifx.com/v1/lights/id:{}"
 
         print("Initilizing LIFX Led Light Controlling Program")
